@@ -1,8 +1,8 @@
 <ap-photo 
-  url="https://images.pexels.com/photos/3952549/pexels-photo-3952549.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" 
-  description="Montanhas"></ap-photo>
+  *ngFor="let photo of photos" 
+  [url]="photo.url" 
+  [description]="photo.description">
+</ap-photo>
 
-<ap-photo 
-  url="https://images.pexels.com/photos/6159755/pexels-photo-6159755.jpeg?cs=srgb&dl=pexels-eva-elijas-6159755.jpg&fm=jpg" 
-  description="Montanhas"></ap-photo>
+
 
