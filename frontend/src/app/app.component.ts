@@ -8,10 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
+/* Requisitando API com Subscribe */
+
 export class AppComponent {
-  photos = []
+  photos: Object[] = []
   
   constructor(http: HttpClient) {
-    console.log(http)
+    
+    http
+      .get<Object[]>('http://localhost:3000/flavio/photos')
+      .subscribe(photos => 
+        this.photos = photos
+        )
   }
 }
