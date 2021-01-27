@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import {PhotoService} from './photos/photo/photo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +9,14 @@ import { Component } from '@angular/core';
 
 /* Requisitando API com Subscribe */
 
-export class AppComponent {
-  photos: Object[] = []
+export class AppComponent implements OnInit {
+  photos: any[] = []
   
-  constructor(http: HttpClient) {
-    
-    http
-      .get<Object[]>('http://localhost:3000/flavio/photos')
-      .subscribe(photos => 
-        this.photos = photos
-        )
+  constructor(private photoService: PhotoService) {}
+
+  ngOnInit(): void {
+    this.photoService
+      .listFromUser('flavio')
+      .subscribe(photos => this.photos = photos)
   }
 }
